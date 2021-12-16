@@ -1,0 +1,39 @@
+name: 0.1.$(Rev:r)
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - Ecolab_OpenCV/modules/FileDownloader/*
+
+resources:
+- repo: self
+
+variables:
+  dockerRegistryServiceConnection: 'e780965d-f028-4704-9ea0-18cb90e50483'
+  imageRepository: 'ecl/opencv/filedownloader'
+  containerRegistry: 'rutzscocr.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Ecolab_OpenCV/modules/FileDownloader/Dockerfile.amd64'
+  tag: '$(Build.BuildNumber)'
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+          latest
