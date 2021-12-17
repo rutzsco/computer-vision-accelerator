@@ -6,7 +6,7 @@ param environmentSuffix string = 'ci'
 param environmentName string = 'computer-vision'
 
 // Resource names
-var acrResourceName = '${environmentName}-acr-${environmentSuffix}'
+var acrResourceName = '${environmentName}acr${environmentSuffix}'
 
 // ACR
 module azureContainerRegistry 'acr.bicep' = {
