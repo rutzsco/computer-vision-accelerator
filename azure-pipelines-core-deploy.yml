@@ -7,7 +7,7 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   azureServiceConnection: 'Demo Account'
-  resourceGroupName: 'rutzsco-computer-vision-ci'
+  resourceGroupName: 'computer-vision-accelerator'
   location: 'eastus'
   templateFile: 'infrastructure/main.bicep'
 
