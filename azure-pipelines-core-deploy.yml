@@ -1,14 +1,13 @@
 trigger:
 - main
 
-name: Deploy Network
+name: Deploy Core Infrastructure
 
 variables:
   vmImageName: 'ubuntu-latest'
 
   azureServiceConnection: 'Demo Account'
-  resourceGroupName: 'rutzsco-infra-network-eastus'
-  vmResourceGroupName: 'rutzsco-infra-vm-eastus'
+  resourceGroupName: 'rutzsco-computer-vision-ci'
   location: 'eastus'
   templateFile: 'infrastructure/main.bicep'
 
