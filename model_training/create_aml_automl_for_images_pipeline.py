@@ -3,7 +3,7 @@ from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 from azureml.core.runconfig import RunConfiguration
 from azureml.core.conda_dependencies import CondaDependencies
-from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+from azureml.core.runconfig import DEFAULT_CPU_IMAGE, DEFAULT_GPU_IMAGE
 from azureml.pipeline.core import Pipeline, PipelineParameter, PipelineData
 from azureml.pipeline.steps import PythonScriptStep
 from azureml.pipeline.core import PipelineParameter, PipelineData, PipelineEndpoint
@@ -55,6 +55,30 @@ except ComputeTargetException:
 default_ds = ws.get_default_datastore()
 
 run_config = RunConfiguration()
+run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
+run_config.environment.python.conda_dependencies = CondaDependencies.create()
+run_config.environment.python.conda_dependencies.add_conda_package("numpy==1.18.5")
+run_config.environment.python.conda_dependencies.add_conda_package("libffi=3.3")
+run_config.environment.python.conda_dependencies.set_pip_requirements([
+    "azureml-core==1.37.0",
+    "azureml-mlflow==1.37.0",
+    "azureml-dataset-runtime==1.37.0",
+    "azureml-telemetry==1.37.0",
+    "azureml-responsibleai==1.37.0",
+    "azureml-automl-core==1.37.0",
+    "azureml-automl-runtime==1.37.0",
+    "azureml-train-automl-client==1.37.0",
+    "azureml-defaults==1.37.0",
+    "azureml-interpret==1.37.0",
+    "azureml-train-automl-runtime==1.37.0",
+    "azureml-automl-dnn-vision==1.37.0",
+    "azureml-dataprep>=2.24.4"
+])
+run_config.environment.python.conda_dependencies.set_python_version('3.7')
+run_config.environment.name = "AutoMLForImagesEnv"
+run_config.environment.register(ws)
+
+
 
 model_name = PipelineParameter(name='model_name', default_value='Model_Name')
 dataset_name = PipelineParameter(name='dataset_name', default_value='Dataset_Name')

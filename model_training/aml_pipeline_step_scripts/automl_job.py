@@ -1,6 +1,7 @@
 from azureml.core import Run, Dataset
 import argparse
 from azureml.core.compute import ComputeTarget
+import os
 
 
 #Parse Input Arguments
@@ -46,7 +47,7 @@ parameter_space = {
 }
 
 tuning_settings = {
-    "iterations": 10,
+    "iterations": 1,
     "max_concurrent_iterations": 5,
     "hyperparameter_sampling": RandomParameterSampling(parameter_space),
     "early_termination_policy": BanditPolicy(
@@ -70,8 +71,12 @@ mAP = max(metrics['mean_average_precision'])
 
 updated_tags = {'Mean Average Precision': mAP}
 
-best_child_run.download_files(prefix='./outputs', output_directory='./tmp',append_prefix=True)
-best_child_run.download_files(prefix='./train_artifacts', output_directory='./tmp',append_prefix=True)
+os.makedirs('tmp')
 
-model = current_run.register_model(model_name, model_path='./tmp', model_framework='Azure ML - AutoML for Images (Yolov5)', tags=updated_tags, datasets=formatted_datasets, sample_input_dataset = dataset)
+best_child_run.download_files(prefix='./outputs', output_directory='tmp',append_prefix=True)
+best_child_run.download_files(prefix='./train_artifacts', output_directory='tmp',append_prefix=True)
+
+current_run.upload_folder('automl_outputs', 'tmp')
+
+model = current_run.register_model(model_name, model_path='automl_outputs', model_framework='Azure ML - AutoML for Images (Yolov5)', tags=updated_tags, datasets=formatted_datasets, sample_input_dataset = dataset)
 
