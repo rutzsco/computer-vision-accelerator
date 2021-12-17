@@ -2,8 +2,6 @@ name: 0.1.$(Rev:r)
 trigger:
 - main
 
-name: Deploy Core Infrastructure
-
 variables:
   vmImageName: 'ubuntu-latest'
 
