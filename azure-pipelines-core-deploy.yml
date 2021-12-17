@@ -1,3 +1,4 @@
+name: 0.1.$(Rev:r)
 trigger:
 - main
 
@@ -9,7 +10,8 @@ variables:
   azureServiceConnection: 'Demo Account'
   resourceGroupName: 'computer-vision-accelerator'
   location: 'eastus'
-  acrName: 'computervisioncr'
+  environmentName: 'computervisioncr'
+  environmentSuffix: 'ci'
   templateFile: 'infrastructure/main.bicep'
 
 pool:
@@ -23,7 +25,7 @@ steps:
     scriptLocation: inlineScript
     inlineScript: |
       az group create --name $(resourceGroupName) --location $(location)  
-      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters acrName=$(acrName) > outputs.json
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters environmentName=$(environmentName) environmentSuffix=$(environmentSuffix) > outputs.json
 
       
       
