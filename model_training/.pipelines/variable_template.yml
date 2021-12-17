@@ -36,3 +36,11 @@ variables:
     value: model_training
   - name: AUTOML_PIPELINE_CREATION_SCRIPT
     value: create_aml_pipeline.py
+  - name: AUTOML_PIPELINE_NAME
+    value: automl_for_images_training_pipeline
+  - name: AUTOML_PIPELINE_DESCRIPTION
+    value: Pipeline for automatically training an object dection model using AML's AutoML for Images functionality
+  - name: PIPELINE_STEPS_DIR
+    value: aml_pipeline_step_scripts
+  - name: AUTOML_JOB_SUBMIT_PIPELINE_SCRIPT
+    value: automl_job.py
