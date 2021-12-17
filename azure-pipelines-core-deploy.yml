@@ -24,8 +24,6 @@ steps:
     inlineScript: |
       az group create --name $(resourceGroupName) --location $(location)  
       az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters region=$(location) > outputs.json
-      vnet_id=$(jq -re '.properties.outputs.vnet_id.value' outputs.json)
-      echo $vnet_id
 
       
       
