@@ -5,14 +5,14 @@ trigger:
       - main
   paths:
     include:
-      - model_training/.pipelines/arm/*
+      - model_training/.pipelines/arm-templates/*
 pr:
   branches:
     include:
       - main
   paths:
     include:
-      - model_training/.pipelines/arm/*
+      - model_training/.pipelines/arm-templates/*
 
 pool:
   vmImage: "ubuntu-latest"
