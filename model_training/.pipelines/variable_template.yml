@@ -3,7 +3,7 @@ variables:
 
   # Azure ML Resource Variables
   - name: BASE_NAME
-    value: cv_acc
+    value: cvacc
   - name: LOCATION
     value: eastus2
   - name: RESOURCE_GROUP
