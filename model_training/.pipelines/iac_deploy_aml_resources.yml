@@ -1,4 +1,4 @@
-# CI/PR Pipeline that deploys an ARM template to create or update the resources needed by the other pipelines.
+# Infrastructure-as-code pipeline that deploys a new instance of Azure Machine Learning
 trigger:
   branches:
     include:
@@ -28,7 +28,7 @@ steps:
       resourceGroupName: "$(RESOURCE_GROUP)"
       location: $(LOCATION)
       templateLocation: "Linked artifact"
-      csmFile: "$(Build.SourcesDirectory)/03-AML_AzDO_MLOpsDevelopment/.pipelines/arm-templates/cloud-environment.json"
+      csmFile: "$(Build.SourcesDirectory)/model_training/.pipelines/arm-templates/cloud-environment.json"
       overrideParameters: "-baseName $(BASE_NAME) -location $(LOCATION) -workspace $(WORKSPACE_NAME) -sku $(WORKSPACE_SKU)"
       deploymentMode: "Incremental"
     displayName: "Deploy Azure Machine Learning Resources"
