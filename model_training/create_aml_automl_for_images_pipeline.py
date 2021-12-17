@@ -1,14 +1,12 @@
-from azureml.core import Workspace, Experiment, Datastore, Environment, Dataset
+from azureml.core import Workspace
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 from azureml.core.runconfig import RunConfiguration
 from azureml.core.conda_dependencies import CondaDependencies
-from azureml.core.runconfig import DEFAULT_CPU_IMAGE, DEFAULT_GPU_IMAGE
-from azureml.pipeline.core import Pipeline, PipelineParameter, PipelineData
+from azureml.core.runconfig import DEFAULT_GPU_IMAGE
+from azureml.pipeline.core import Pipeline, PipelineParameter
 from azureml.pipeline.steps import PythonScriptStep
-from azureml.pipeline.core import PipelineParameter, PipelineData, PipelineEndpoint
-from azureml.data.output_dataset_config import OutputTabularDatasetConfig, OutputDatasetConfig, OutputFileDatasetConfig
-import logging
+from azureml.pipeline.core import PipelineParameter, PipelineEndpoint
 import os
 
 #Connect to AML Workspace
@@ -17,8 +15,6 @@ resource_group = os.getenv("RESOURCE_GROUP")
 workspace_name = os.getenv("WORKSPACE_NAME")
 workspace_region = os.getenv("WORKSPACE_REGION")
 
-import logging
-import os
 
 try:
     # ws = Workspace.from_config()
