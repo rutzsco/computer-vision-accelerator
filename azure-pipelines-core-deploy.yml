@@ -9,6 +9,7 @@ variables:
   azureServiceConnection: 'Demo Account'
   resourceGroupName: 'computer-vision-accelerator'
   location: 'eastus'
+  acrName: 'computervisioncr'
   templateFile: 'infrastructure/main.bicep'
 
 pool:
@@ -22,7 +23,7 @@ steps:
     scriptLocation: inlineScript
     inlineScript: |
       az group create --name $(resourceGroupName) --location $(location)  
-      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters region=$(location) > outputs.json
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters acrName=$(acrName) > outputs.json
 
       
       
