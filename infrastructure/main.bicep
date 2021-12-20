@@ -16,5 +16,14 @@ module azureContainerRegistry 'acr.bicep' = {
   }
 }
 
+// IotHub
+module iothub 'iot-hub.bicep' = {
+  name: 'iothub'
+  params: {
+    environmentName: environmentName
+    environmentSuffix: environmentSuffix
+  }
+}
+
 output acrName string = azureContainerRegistry.outputs.acrName
 output acrLoginServer string = azureContainerRegistry.outputs.acrLoginServer
