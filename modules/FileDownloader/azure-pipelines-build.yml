@@ -5,15 +5,15 @@ trigger:
     - main
   paths:
     include:
-    - Ecolab_OpenCV/modules/FileDownloader/*
+    - modules/FileDownloader/*
 
 resources:
 - repo: self
 
 variables:
-  dockerRegistryServiceConnection: 'e780965d-f028-4704-9ea0-18cb90e50483'
+  dockerRegistryServiceConnection: '3e7bd2c0-853d-4920-896c-5a1e573a4f4d'
   imageRepository: 'ecl/opencv/filedownloader'
-  containerRegistry: 'rutzscocr.azurecr.io'
+  containerRegistry: 'computervisioncracrci.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Ecolab_OpenCV/modules/FileDownloader/Dockerfile.amd64'
   tag: '$(Build.BuildNumber)'
   vmImageName: 'ubuntu-latest'
