@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: '3e7bd2c0-853d-4920-896c-5a1e573a4f4d'
   imageRepository: 'ecl/opencv/filedownloader'
   containerRegistry: 'computervisioncracrci.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/Ecolab_OpenCV/modules/FileDownloader/Dockerfile.amd64'
+  dockerfilePath: '$(Build.SourcesDirectory)/modules/FileDownloader/Dockerfile.amd64'
   tag: '$(Build.BuildNumber)'
   vmImageName: 'ubuntu-latest'
 
