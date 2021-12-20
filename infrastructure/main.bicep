@@ -5,8 +5,12 @@ param environmentSuffix string = 'ci'
 @description('The environment prefix to append to resource names.')
 param environmentName string = 'computer-vision'
 
+@description('The environment prefix to append to resource names.')
+param environmentNameShort string = 'computervision'
+
 // Resource names
 var acrResourceName = '${environmentName}acr${environmentSuffix}'
+var saResourceName = '${environmentNameShort}sa${environmentSuffix}'
 
 // ACR
 module azureContainerRegistry 'acr.bicep' = {
@@ -22,6 +26,14 @@ module iothub 'iot-hub.bicep' = {
   params: {
     environmentName: environmentName
     environmentSuffix: environmentSuffix
+  }
+}
+
+// Storage Account
+module sa 'storage-account.bicep' = {
+  name: 'sa'
+  params: {
+    storageAccountName: saResourceName
   }
 }
 
