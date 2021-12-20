@@ -11,7 +11,7 @@ resource azureContainerRegistry 'Microsoft.ContainerRegistry/registries@2020-11-
     adminUserEnabled: true
     publicNetworkAccess: 'Enabled'
     networkRuleSet: {
-      defaultAction: 'Deny'
+      defaultAction: 'Allow'
     }
   }
 }
