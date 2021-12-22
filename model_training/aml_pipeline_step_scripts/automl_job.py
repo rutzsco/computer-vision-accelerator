@@ -62,7 +62,7 @@ image_automl_config = AutoMLImageConfig(
     **tuning_settings
 )
 
-new_run = current_run.experiment.submit(image_automl_config)
+new_run = current_run.submit_child(image_automl_config)
 new_run.wait_for_completion()
 
 best_child_run = new_run.get_best_child()
