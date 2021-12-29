@@ -81,13 +81,26 @@ Inside your Azure Machine Learning workspace you can attach the Azure Storage Ac
 
 ![Browse Datastore](doc_img/14.png?raw=true "Browse Datastore")
 
-## Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeler Tools
+## Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeling Tools
 
 Here you will use Azure ML to create a dataset of labeled images using images collected on the edge, retrieved from your attached datastore.
-* Navigate to your Azure Machine Learning workspace and click 'Data Labeling'.
-* From the top menu, click `+ Add project`.
-* Give your project a name that is specific to the particular detection task at hand and select `Object Identification (Bounding Box)` from the menu below, then click `Next`.
-* When prompted to select or create a dataset choose `+ Create dataset` and select the `From datastore` option.
+
+* Navigate to your Azure Machine Learning workspace and click <i>Data Labeling</i>.
+
+![AML Data Labeling](doc_img/15.png?raw=true "AML Data Labeling")
+
+* From the top menu, click <i>+ Add project</i>.
+
+![Create AML Data Labeling Project](doc_img/16.png?raw=true "Create AML Data Labeling Project")
+
+* Under the <i>Project details</i> section, give your project a name that is specific to the particular detection task at hand and select <i>Object Identification (Bounding Box)</i> from the menu below, then click <i>Next</i>.
+
+![Project Details](doc_img/17.png?raw=true "Project Details")
+
+* When prompted to select or create a dataset choose <i>+ Create dataset</i> and select the <i>From datastore</i> option.
+
+
+
 * Give your new dataset a unique name that reflects the images captured in support of the detection task and click `Next`.
 * Under datastore selection choose the datastore you added which contains images captured on the edge. Here, you can also provide a wildcarded path if you wish to pull only images from specified partitions. If you wish to pull all images from the container, enter `/` as the path.
 * Confirm details about your new dataset and click `Create`.
