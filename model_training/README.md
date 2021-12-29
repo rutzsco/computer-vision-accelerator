@@ -1,8 +1,9 @@
+
 # Create Custom Object Detection Models using Azure Machine Learning & AutoML for Images
 
 Set up a CI pipeline inside of Azure DevOps to publish an Azure Machine Learning Pipeline for training object detection models. Models trained through via this AML pipeline are automatically added to a model registry and can be deployed to the edge.
 
-The guided walkthrough below highlights how to deploy an Azure Machine Learning pipeline via a CI pipeline in Azure DevOps, how to create a labeled dataset using images sourced from blob storage, and how to train a custom object detection model using Azure ML's AutoML for Images functionality.
+The guided walkthrough below highlights how to deploy an Azure Machine Learning pipeline via a CI pipeline in Azure DevOps, how to create a labeled dataset in Azure ML using images sourced from blob storage, and how to train a custom object detection model using Azure ML's AutoML for Images functionality.
  - [Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace](https://github.com/rutzsco/computer-vision-accelerator/tree/mlops/model_training#step-1---create-azure-devops-service-connection-to-machine-learning-workspace)
  - [Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline](#step-2---deploy-and-run-ci-pipeline-for-updating-azure-machine-learning-automl-for-images-pipeline)
  - [Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore](#step-3---register-your-azure-storage-account-used-for-image-capture-as-an-azure-machine-learning-datastore)
@@ -10,7 +11,7 @@ The guided walkthrough below highlights how to deploy an Azure Machine Learning 
  - [Step 5 - Train a New Object Detection Model](#step-5---train-a-new-object-detection-model)
 
 
-<b>Note: </b> Prior to completing any of the steps below, deploy all required Azure infrastructure using the IaC pipeline at `path\to\dir\pipeline.yaml.`
+<b>Note: </b> Prior to completing any of the steps below, deploy all required Azure infrastructure using the IaC pipeline at `path\to\dir\pipeline.yaml`.
 
 ## Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace
 
@@ -34,13 +35,32 @@ From your Azure DevOps project, create a new service connection to your Azure Ma
 
 ## Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline
 
-From your Azure DevOps project, create a new CI pipeline using the yaml definition at `model_training/publish_aml_pipeline.yml`.
-* Navigate to Pipelines and click 'New Pipeline.'
-* When prompted to connect your code, navigate to your forked repository.
-* When prompted to configure your pipeline, choose the 'Existing Azure Pipelines YAML file option'. 
-* Finally, when asked for the location of the pipeline definition, select the `model_training/.pipelines/publish_aml_pipeline.yml` file.
+From your Azure DevOps project, create a new CI pipeline using the yaml definition at `model_training/.pipelines/publish_aml_pipeline.yml`.
+
+* Navigate to Pipelines and click <i>New Pipeline</i>.
+
+![New Pipeline](doc_img/05.png?raw=true "New Pipeline")
+
+* When prompted to connect your code, select GitHub and navigate to your forked repository.
+
+![Connect to Forked Repo](doc_img/06.png?raw=true "Connect to Forked Repo")
+
+* When prompted to configure your pipeline, choose the <i>Existing Azure Pipelines YAML file option</i>. 
+
+![Existing Azure Pipelines YAML](doc_img/07.png?raw=true "Existing Azure Pipelines YAML")
+
+* Finally, when asked for the location of the pipeline definition, select the `model_training/.pipelines/publish_aml_pipeline.yml` file and click <i>Continue</i>.
+
+![CI YAML Pipeline Definition](doc_img/08.png?raw=true "CI YAML Pipeline Definition")
+
 * Prior to running this pipeline, modify the values contained in `model_training/.pipelines/variable_template.yml` to reflect the names of your Azure resources and the size of your desired training cluster. We recommend provising a N-Series GPU VM for model training.
-* Finally, when shown the pipeline review screen, click 'Run'.
+
+![Variable Template](doc_img/09.png?raw=true "Variable Tempalte")
+
+* Finally, when shown the pipeline review screen, click <i>Run</i>.
+
+
+
 * This pipeline should build and publish a new pipeline in your Azure Machine Learning workspace. You can validate by first navigating to your AML workspace, then to Pipelines and Pipeline endpoints. You should see a published pipeline endpoint matching the name and description defined in `model_training/.pipelines/variable_template.yml.` This pipeline should include a single step for submitting an AutoML for Images job.
 
 ## Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore
