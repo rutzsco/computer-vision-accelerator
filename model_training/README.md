@@ -151,7 +151,7 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 
 ![Experiment Name](doc_img/30.png?raw=true "Experiment Name")
 
-* Under the <i>model_name</i> parameter, provide a name which will uniquely represent the model that you are training. For instance, if you are detecting presence or absence of a cap on a container, 'Cap_Detection_Model' would be an appropriate name. Paste the copied dataset under the <i>dataset_name</i> parameter - this dataset is retrieved programmatically during pipeline execution and used as an input to model training. Enter the name of a cluster to be used for model training - this cluster should already exist in your AML workspace. Once all fields have been entered, hit the 'Submit' button.
+* Under the <i>model_name</i> parameter, provide a name which will uniquely represent the model that you are training. For instance, if you are detecting presence or absence of a cap on a container, 'cap_detection_model' would be an appropriate name. Paste the copied dataset under the <i>dataset_name</i> parameter - this dataset is retrieved programmatically during pipeline execution and used as an input to model training. Enter the name of a cluster to be used for model training - this cluster should already exist in your AML workspace. Once all fields have been entered, hit the <i>Submit</i> button.
 
 ![Pipeline Parameters](doc_img/31.png?raw=true "Pipeline Parameters")
 
@@ -161,6 +161,6 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 
 * Once training completes, the best performing model will be added to your registry automatically along with key performance metrics (Mean Average Precision, Precision, Recall). A serialized version of this model and associated python scoring file are included as well.
 
-
+![Model Registry](doc_img/33.png?raw=true "Model Registry")
 
 ### Your custom trained object detection model is ready to be deployed to the edge! 
