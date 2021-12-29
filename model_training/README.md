@@ -3,8 +3,11 @@
 Set up a CI pipeline inside of Azure DevOps to publish an Azure Machine Learning Pipeline for training object detection models. Models trained through via this AML pipeline are automatically added to a model registry and can be deployed to the edge.
 
 The guided walkthrough below highlights how to deploy an Azure Machine Learning pipeline via a CI pipeline in Azure DevOps, how to create a labeled dataset using images sourced from blob storage, and how to train a custom object detection model using Azure ML's AutoML for Images functionality.
- - [Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace](#step-1-create-azure-devops-service-connection-to-machine-learning-workspace)
- - [Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline](#step-2-deploy-and-run-ci-pipeline-for-updating-azure-machine-learning-automl-for-images-pipeline)
+ - [Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace](https://github.com/rutzsco/computer-vision-accelerator/tree/mlops/model_training#step-1---create-azure-devops-service-connection-to-machine-learning-workspace)
+ - [Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline](#step-2---deploy-and-run-ci-pipeline-for-updating-azure-machine-learning-automl-for-images-pipeline)
+ - [Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore](#step-3---register-your-azure-storage-account-used-for-image-capture-as-an-azure-machine-learning-datastore)
+ - [Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeler Tools](#step-4---create-a-labeled-dataset-using-the-azure-machine-learning-data-labeler-tools)
+ - [Step 5 - Train a New Object Detection Model](#step-5---train-a-new-object-detection-model)
 
 
 <b>Note: </b> Prior to completing any of the steps below, deploy all required Azure infrastructure using the IaC pipeline at `path\to\dir\pipeline.yaml.`
@@ -14,7 +17,9 @@ The guided walkthrough below highlights how to deploy an Azure Machine Learning 
 From your Azure DevOps project, create a new service connection to your Azure Machine Learning Workspace.
 
 * Navigate to Project Settings, then to Service Connections, and click <i>New service connection</i>.
+
 ![Service Connections](doc_img/01.png?raw=true "Service Connections")
+
 * Select Azure Resource Manager then click <i>Next</i>.
 * Leave Service principal (automatic) selected and click <i>Next</i>.
 * Under Scope level, select <i>Machine Learning Workspace</i>, then choose the appropriate subscription, resource group, and AML resource. Name your service connection `aml-workspace-connection`. Finally, under security, check <i>Grant access permission to all pipelines</i>.  
