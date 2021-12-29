@@ -68,10 +68,10 @@ new_run.wait_for_completion()
 best_child_run = new_run.get_best_child()
 metrics = best_child_run.get_metrics()
 mAP = max(metrics['mean_average_precision'])
-accuracy = max(metrics['accuracy'])
+recall = max(metrics['recall'])
 precision = max(metrics['precision'])
 
-updated_tags = {'Mean Average Precision': mAP, 'Accuracy': accuracy, 'Precision': precision}
+updated_tags = {'Mean Average Precision': mAP, 'Recall': recall, 'Precision': precision}
 
 os.makedirs('tmp')
 
