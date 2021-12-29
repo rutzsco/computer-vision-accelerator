@@ -55,13 +55,15 @@ From your Azure DevOps project, create a new CI pipeline using the yaml definiti
 
 * Prior to running this pipeline, modify the values contained in `model_training/.pipelines/variable_template.yml` to reflect the names of your Azure resources and the size of your desired training cluster. We recommend provising a N-Series GPU VM for model training.
 
-![Variable Template](doc_img/09.png?raw=true "Variable Tempalte")
+![Variable Template](doc_img/09.png?raw=true "Variable Template")
 
-* Finally, when shown the pipeline review screen, click <i>Run</i>.
+* Finally, when shown the pipeline review screen, click <i>Run</i>. Successful execution of this CI pipeline should publish a new pipeline in your Azure Machine Learning workspace.
 
+![CI Pipeline Success](doc_img/10.png?raw=true "CI Pipeline Success")
 
+* You can validate creation of the AML pipeline by first navigating to your AML workspace, then to Pipelines and Pipeline endpoints. You should see a published pipeline endpoint matching the name and description defined in `model_training/.pipelines/variable_template.yml.` This pipeline should include a single step for submitting an AutoML job.
 
-* This pipeline should build and publish a new pipeline in your Azure Machine Learning workspace. You can validate by first navigating to your AML workspace, then to Pipelines and Pipeline endpoints. You should see a published pipeline endpoint matching the name and description defined in `model_training/.pipelines/variable_template.yml.` This pipeline should include a single step for submitting an AutoML for Images job.
+![Azure ML Published Pipeline Endpoint](doc_img/11.png?raw=true "Azure ML Published Pipeline Endpoint")
 
 ## Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore
 
