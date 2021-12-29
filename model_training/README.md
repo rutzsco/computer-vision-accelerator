@@ -1,19 +1,20 @@
 # Create Custom Object Detection Models using Azure Machine Learning & AutoML for Images
-#### Set up a CI pipeline inside of Azure DevOps to publish an Azure Machine Learning Pipeline for training object detection models. Models trained through via this AML pipeline are automatically added to a model registry and can be deployed to the edge.
+
+Set up a CI pipeline inside of Azure DevOps to publish an Azure Machine Learning Pipeline for training object detection models. Models trained through via this AML pipeline are automatically added to a model registry and can be deployed to the edge.
 
 The steps below outline how to set up your Azure DevOps environment to deploy your CI pipeline for publishing an Azure Machine Learning pipeline.
 
 <b>Note: </b> Prior to completing any of the steps below, deploy all required Azure infrastructure using the IaC pipeline at `path\to\dir\pipeline.yaml.`
 
-### Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace
+## Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace
 
 From your Azure DevOps project, create a new service connection to your Azure Machine Learning Workspace.
-* Navigate to Project Settings, then to Service Connections, and click `New service connection.`
-* Select Azure Resource Manager then click Next.
+* Navigate to Project Settings, then to Service Connections, and click <i>New service connection</i>.
+* Select Azure Resource Manager then click <i>Next</i>.
 * Leave Service principal (automatic) selected and click Next.
-* Under Scope level, select Machine Learning Workspace, then choose the appropriate subscription, resource group, and AML resource. Name your service connection `aml-workspace-connection`. Finally, under security, check 'Grant access permission to all pipelines'.  
+* Under Scope level, select Machine Learning Workspace, then choose the appropriate subscription, resource group, and AML resource. Name your service connection `aml-workspace-connection`. Finally, under security, check <i>Grant access permission to all pipelines</i>.  
 
-### Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline
+## Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline
 
 From your Azure DevOps project, create a new CI pipeline using the yaml definition at `model_training/publish_aml_pipeline.yml`.
 * Navigate to Pipelines and click 'New Pipeline.'
@@ -24,7 +25,7 @@ From your Azure DevOps project, create a new CI pipeline using the yaml definiti
 * Finally, when shown the pipeline review screen, click 'Run'.
 * This pipeline should build and publish a new pipeline in your Azure Machine Learning workspace. You can validate by first navigating to your AML workspace, then to Pipelines and Pipeline endpoints. You should see a published pipeline endpoint matching the name and description defined in `model_training/.pipelines/variable_template.yml.` This pipeline should include a single step for submitting an AutoML for Images job.
 
-### Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore
+## Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore
 
 Inside your Azure Machine Learning workspace you can attach the Azure Storage Account, and specific containers, used for capturing images collected on the edge. This datastore can then be used to feed images into datasets used during model training.
 * Navigate to your Azure Machine Learning workspace and click 'Datastores'.
@@ -32,7 +33,7 @@ Inside your Azure Machine Learning workspace you can attach the Azure Storage Ac
 *  For authentication, your storage account key can be retrieved under the 'Access Keys' panel from the storage resource, or alternatively you can create a SAS token specific to the target container with at least Read and List permissions.
 * Once all fields have been entered click `Create`. You can verify that you have successfully attached your datastore by first selecting it from the list of datastores and then clicking `Browse (preview)` - you should see images listed in the explorer which can be viewed in the right panel.
 
-### Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeler Tools
+## Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeler Tools
 
 Here you will use Azure ML to create a dataset of labeled images using images collected on the edge, retrieved from your attached datastore.
 * Navigate to your Azure Machine Learning workspace and click 'Data Labeling'.
@@ -49,7 +50,7 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 * Click your newly created project and then select the `Label data` button. This will open a labeling utility which will allow you to draw bounding boxes and tag defects present in your images. There are multiple keyboard shortcuts available which can be reviewed under the `Shortcut Keys` panel.
 * After labeling a large number of images, navigate to the data labeling project homepage and click `Export` then select `Azure ML Dataset`. This will export your image dataset as an AutoML-compatible Azure ML dataset named according to the format 'NAME_DATE_TIME'.
 
-### Step 5 - Train a New Object Detection Model
+## Step 5 - Train a New Object Detection Model
 
 * First, copy the name of your newly-exported dataset to your clipboard.
 * Navigate to Pipelines and then Pipeline endpoints. Select the published pipeline endpoint deployed via your CI pipeline in Azure DevOps.
