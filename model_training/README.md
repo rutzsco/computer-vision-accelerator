@@ -129,9 +129,9 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 
 ![Data Labeling Bounding Boxes](doc_img/25.png?raw=true "Data Labeling Bounding Boxes")
 
-* After labeling a large number of images, navigate to the data labeling project homepage and click `Export` then select `Azure ML Dataset`. This will export your image dataset as an AutoML-compatible Azure ML dataset named according to the format 'NAME_DATE_TIME'.
+* After labeling a large number of images, navigate to the data labeling project homepage and click <i>Export</i> then select <i>Azure ML Dataset</i>. This will export your image dataset as an AutoML-compatible Azure ML dataset named according to the format 'NAME_DATE_TIME'.
 
-![Azure ML Labeled Dataset](doc_img/25.png?raw=true "Azure ML Labeled Dataset")
+![Azure ML Labeled Dataset](doc_img/26.png?raw=true "Azure ML Labeled Dataset")
 
 ## Step 5 - Train a New Object Detection Model
 
