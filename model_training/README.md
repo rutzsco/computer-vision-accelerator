@@ -5,7 +5,7 @@ Set up a CI pipeline inside of Azure DevOps to publish an Azure Machine Learning
 
 The guided walkthrough below highlights how to deploy an Azure Machine Learning pipeline via a CI pipeline in Azure DevOps, how to create a labeled dataset in Azure ML using images sourced from blob storage, and how to train a custom object detection model using Azure ML's AutoML for Images functionality.
  - [Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace](https://github.com/rutzsco/computer-vision-accelerator/tree/mlops/model_training#step-1---create-azure-devops-service-connection-to-machine-learning-workspace)
- - [Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline](#step-2---deploy-and-run-ci-pipeline-for-updating-azure-machine-learning-automl-for-images-pipeline)
+ - [Step 2 - Create and Run CI Pipeline for Deploying Azure Machine Learning AutoML for Images Pipeline](#step-2---create-and-run-ci-pipeline-for-deploying-azure-machine-learning-automl-for-images-pipeline)
  - [Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore](#step-3---register-your-azure-storage-account-used-for-image-capture-as-an-azure-machine-learning-datastore)
  - [Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeling Tools](#step-4---create-a-labeled-dataset-using-the-azure-machine-learning-data-labeling-tools)
  - [Step 5 - Train a New Object Detection Model](#step-5---train-a-new-object-detection-model)
@@ -33,7 +33,7 @@ From your Azure DevOps project, create a new service connection to your Azure Ma
 
 ![AML Workspace Connection](doc_img/04.png?raw=true "AML Workspace Connection")
 
-## Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline
+## Step 2 - Create and Run CI Pipeline for Deploying Azure Machine Learning AutoML for Images Pipeline
 
 From your Azure DevOps project, create a new CI pipeline using the yaml definition at `model_training/.pipelines/publish_aml_pipeline.yml`.
 
