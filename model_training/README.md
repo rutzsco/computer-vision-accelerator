@@ -103,16 +103,35 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 
 * Give your new dataset a unique name that reflects the images captured in support of the detection task and click <i>Next</i>.
 
+![Labeled Dataset Name](doc_img/19.png?raw=true "Labeled Dataset Name")
 
+* Under datastore selection choose the datastore you added which contains images captured on the edge. Here, you can also provide a wildcarded path if you wish to pull only images from specified partitions. If you wish to pull all images from the container, enter `/` as the path and click <i>Next</i>. Confirm details about your new dataset and click <i>Create</i>.
 
-* Under datastore selection choose the datastore you added which contains images captured on the edge. Here, you can also provide a wildcarded path if you wish to pull only images from specified partitions. If you wish to pull all images from the container, enter `/` as the path.
-* Confirm details about your new dataset and click `Create`.
-* When prompted, choose to Enable incremental refresh at regular intervals. Thiss will automatically add newly captured images to your data labeling project.
+![Labeled Dataset Path](doc_img/20.png?raw=true "Labeled Dataset Path")
+
+* When prompted, choose to Enable incremental refresh at regular intervals. This will automatically add newly captured images to your data labeling project.
+
+![Incremental Refresh](doc_img/21.png?raw=true "Incremental Refresh")
+
 * On the next panel, add label classes for all defects you wish to detect - include positive and negative classes here.
-* You can optionally use ML-assisted labeling which will accelerate your data labeling process, particularly as more data is captured. 
-* After providing all requested information click `Create project` and wait for the project to initialize. 
-* Click your newly created project and then select the `Label data` button. This will open a labeling utility which will allow you to draw bounding boxes and tag defects present in your images. There are multiple keyboard shortcuts available which can be reviewed under the `Shortcut Keys` panel.
+
+![Label Classes](doc_img/22.png?raw=true "Label Classes")
+
+* You can optionally use ML-assisted labeling which will accelerate your data labeling process, particularly as more data is captured. This option is strongly recommended.
+
+![ML-Assisted Labeling](doc_img/23.png?raw=true "ML-Assisted Labeling")
+
+* After providing all requested information click <i>Create project</i> and wait for the project to initialize. 
+
+* Click your newly created project and then select the <i>Label data</i> button. This will open a labeling utility which will allow you to draw bounding boxes and tag objects/defects present in your images. There are multiple keyboard shortcuts available which can be reviewed under the <i>Shortcut Keys</i> panel.
+
+![Data Labeling](doc_img/24.png?raw=true "Data Labeling")
+
+![Data Labeling Bounding Boxes](doc_img/25.png?raw=true "Data Labeling Bounding Boxes")
+
 * After labeling a large number of images, navigate to the data labeling project homepage and click `Export` then select `Azure ML Dataset`. This will export your image dataset as an AutoML-compatible Azure ML dataset named according to the format 'NAME_DATE_TIME'.
+
+![Azure ML Labeled Dataset](doc_img/25.png?raw=true "Azure ML Labeled Dataset")
 
 ## Step 5 - Train a New Object Detection Model
 
