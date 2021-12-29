@@ -30,7 +30,7 @@ From your Azure DevOps project, create a new service connection to your Azure Ma
 
 * Under Scope level, select <i>Machine Learning Workspace</i>, then choose the appropriate subscription, resource group, and AML resource. Name your service connection `aml-workspace-connection`. Finally, under security, check <i>Grant access permission to all pipelines</i> then click <i>Save</i>.  
 
-![AML Workspace Connection](doc_img/03.png?raw=true "AML Workspace Connection")
+![AML Workspace Connection](doc_img/04.png?raw=true "AML Workspace Connection")
 
 ## Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline
 
@@ -81,17 +81,3 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 * Run progress can be monitored by navigating to 'Experiments' and selecting the name of your submitted experiment.
 * Once training completes, the best performing model will be added to your registry automatically along with key performance metrics (Mean Average Precision, Precision, Recall). A serialized version of this model and associated python scoring file are included as well.
 * Your custom trained object detection model is ready to be deployed to the edge! 
-
-
-
-
-
-Steps:
-
-1.) Create Azure Resource Manager service connection 
-
-2.) Trigger IaC Pipeline
-
-3.) Create Azure Machine Learning Workspace service connection to new workspace
-
-4.) Trigger AML publish pipeline
