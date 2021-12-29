@@ -47,7 +47,7 @@ parameter_space = {
 }
 
 tuning_settings = {
-    "iterations": 1,
+    "iterations": 10,
     "max_concurrent_iterations": 5,
     "hyperparameter_sampling": RandomParameterSampling(parameter_space),
     "early_termination_policy": BanditPolicy(
@@ -68,8 +68,10 @@ new_run.wait_for_completion()
 best_child_run = new_run.get_best_child()
 metrics = best_child_run.get_metrics()
 mAP = max(metrics['mean_average_precision'])
+accuracy = max(metrics['accuracy'])
+precision = max(metrics['precision'])
 
-updated_tags = {'Mean Average Precision': mAP}
+updated_tags = {'Mean Average Precision': mAP, 'Accuracy': accuracy, 'Precision': precision}
 
 os.makedirs('tmp')
 
