@@ -21,8 +21,16 @@ From your Azure DevOps project, create a new service connection to your Azure Ma
 ![Service Connections](doc_img/01.png?raw=true "Service Connections")
 
 * Select Azure Resource Manager then click <i>Next</i>.
+
+![Azure Resource Manager](doc_img/02.png?raw=true "Azure Resource Manager")
+
 * Leave Service principal (automatic) selected and click <i>Next</i>.
-* Under Scope level, select <i>Machine Learning Workspace</i>, then choose the appropriate subscription, resource group, and AML resource. Name your service connection `aml-workspace-connection`. Finally, under security, check <i>Grant access permission to all pipelines</i>.  
+
+![Service Principal Automatic](doc_img/03.png?raw=true "Service Principal Automatic")
+
+* Under Scope level, select <i>Machine Learning Workspace</i>, then choose the appropriate subscription, resource group, and AML resource. Name your service connection `aml-workspace-connection`. Finally, under security, check <i>Grant access permission to all pipelines</i> then click <i>Save</i>.  
+
+![AML Workspace Connection](doc_img/03.png?raw=true "AML Workspace Connection")
 
 ## Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline
 
