@@ -53,7 +53,7 @@ From your Azure DevOps project, create a new CI pipeline using the yaml definiti
 
 ![CI YAML Pipeline Definition](doc_img/08.png?raw=true "CI YAML Pipeline Definition")
 
-* Prior to running this pipeline, modify the values contained in `model_training/.pipelines/variable_template.yml` to reflect the names of your Azure resources and the size of your desired training cluster. We recommend provising a N-Series GPU VM for model training.
+* Prior to running this pipeline, modify the values contained in `model_training/.pipelines/variable_template.yml` to reflect the names of your Azure resources and the size of your desired training cluster. We recommend provising a N-Series GPU VM for model training. The default settings included in this repo should accomodate most vision scenarios.
 
 ![Variable Template](doc_img/09.png?raw=true "Variable Template")
 
@@ -61,17 +61,25 @@ From your Azure DevOps project, create a new CI pipeline using the yaml definiti
 
 ![CI Pipeline Success](doc_img/10.png?raw=true "CI Pipeline Success")
 
-* You can validate creation of the AML pipeline by first navigating to your AML workspace, then to Pipelines and Pipeline endpoints. You should see a published pipeline endpoint matching the name and description defined in `model_training/.pipelines/variable_template.yml.` This pipeline should include a single step for submitting an AutoML job.
+* You can validate creation of the AML pipeline by first navigating to your AML workspace, then to Pipelines and Pipeline endpoints. You should see a published pipeline endpoint matching the name and description defined in `model_training/.pipelines/variable_template.yml`. This pipeline should include a single step for submitting an AutoML job.
 
 ![Azure ML Published Pipeline Endpoint](doc_img/11.png?raw=true "Azure ML Published Pipeline Endpoint")
 
 ## Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore
 
 Inside your Azure Machine Learning workspace you can attach the Azure Storage Account, and specific containers, used for capturing images collected on the edge. This datastore can then be used to feed images into datasets used during model training.
-* Navigate to your Azure Machine Learning workspace and click 'Datastores'.
-* Click `+ New datastore` and enter the required fields. For 'Datastore name' choose something memorable like 'edgevisionstorage'.
-*  For authentication, your storage account key can be retrieved under the 'Access Keys' panel from the storage resource, or alternatively you can create a SAS token specific to the target container with at least Read and List permissions.
-* Once all fields have been entered click `Create`. You can verify that you have successfully attached your datastore by first selecting it from the list of datastores and then clicking `Browse (preview)` - you should see images listed in the explorer which can be viewed in the right panel.
+
+* Navigate to your Azure Machine Learning workspace and click <i>Datastores</i>.
+
+![Datastores](doc_img/12.png?raw=true "Datastores")
+
+* Click <i>+ New datastore</i> and enter the required fields. For <i>Datastore name</i> choose something memorable like <i>imagestorage<i>. For authentication, your storage account key can be retrieved under the 'Access Keys' panel from the storage resource, or alternatively you can create a SAS token specific to the target container with at least Read and List permissions. Once all fields have been entered click <i>Create</i>.
+
+![New Datastore](doc_img/13.png?raw=true "New Datastore")
+
+* You can verify that you have successfully attached your datastore by first selecting it from the list of datastores and then clicking <i>Browse (preview)</i> - you should see images listed in the explorer which can be viewed in the right panel.
+
+![Browse Datastore](doc_img/14.png?raw=true "Browse Datastore")
 
 ## Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeler Tools
 
