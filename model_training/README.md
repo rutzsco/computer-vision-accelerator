@@ -7,7 +7,7 @@ The guided walkthrough below highlights how to deploy an Azure Machine Learning 
  - [Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace](https://github.com/rutzsco/computer-vision-accelerator/tree/mlops/model_training#step-1---create-azure-devops-service-connection-to-machine-learning-workspace)
  - [Step 2 - Deploy and Run CI Pipeline for Updating Azure Machine Learning AutoML for Images Pipeline](#step-2---deploy-and-run-ci-pipeline-for-updating-azure-machine-learning-automl-for-images-pipeline)
  - [Step 3 - Register your Azure Storage Account used for Image Capture as an Azure Machine Learning Datastore](#step-3---register-your-azure-storage-account-used-for-image-capture-as-an-azure-machine-learning-datastore)
- - [Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeler Tools](#step-4---create-a-labeled-dataset-using-the-azure-machine-learning-data-labeler-tools)
+ - [Step 4 - Create a Labeled Dataset using the Azure Machine Learning Data Labeling Tools](#step-4---create-a-labeled-dataset-using-the-azure-machine-learning-data-labeling-tools)
  - [Step 5 - Train a New Object Detection Model](#step-5---train-a-new-object-detection-model)
 
 
@@ -136,13 +136,28 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 ## Step 5 - Train a New Object Detection Model
 
 * First, copy the name of your newly-exported dataset to your clipboard.
+
+![Azure ML Labeled Dataset](doc_img/27.png?raw=true "Azure ML Labeled Dataset")
+
 * Navigate to Pipelines and then Pipeline endpoints. Select the published pipeline endpoint deployed via your CI pipeline in Azure DevOps.
-* From the pipeline definition panel, click the `Submit` button. This will open a new panel with experiment details.
+
+![Published Pipeline Endpoint](doc_img/28.png?raw=true "Published Pipeline Endpoint")
+
+* From the pipeline definition panel, click the <i>Submit</i> button. This will open a new panel with experiment details.
+
+![Pipeline Submission Panel](doc_img/29.png?raw=true "Pipeline Submission Panel")
+
 * For reference, experiments in Azure ML are logical collections of related runs. Here, you should either select an existing experiment, or choose to create a new experiment and provide a name.
-* Under the `model_name` parameter, provide a name which will uniquely represent the model that you are training. For instance, if you are detecting presence or absence of a cap on a container, 'Cap_Detection_Model' would be an appropriate name.
-* Paste the copied dataset under the `dataset_name` parameter - this dataset is retrieved programmatically during pipeline execution and used as an input to model training.
-* Enter the name of a cluster to be used for model training - this cluster should already exist in your AML workspace.
-* Once all fields have been entered, hit the 'Submit' button.
+
+![Experiment Name](doc_img/30.png?raw=true "Experiment Name")
+
+* Under the <i>model_name</i> parameter, provide a name which will uniquely represent the model that you are training. For instance, if you are detecting presence or absence of a cap on a container, 'Cap_Detection_Model' would be an appropriate name. Paste the copied dataset under the <i>dataset_name</i> parameter - this dataset is retrieved programmatically during pipeline execution and used as an input to model training. Enter the name of a cluster to be used for model training - this cluster should already exist in your AML workspace. Once all fields have been entered, hit the 'Submit' button.
+
+![Pipeline Parameters](doc_img/31.png?raw=true "Pipeline Parameters")
+
 * Run progress can be monitored by navigating to 'Experiments' and selecting the name of your submitted experiment.
+
+
+
 * Once training completes, the best performing model will be added to your registry automatically along with key performance metrics (Mean Average Precision, Precision, Recall). A serialized version of this model and associated python scoring file are included as well.
 * Your custom trained object detection model is ready to be deployed to the edge! 
