@@ -73,7 +73,7 @@ Inside your Azure Machine Learning workspace you can attach the Azure Storage Ac
 
 ![Datastores](doc_img/12.png?raw=true "Datastores")
 
-* Click <i>+ New datastore</i> and enter the required fields. For <i>Datastore name</i> choose something memorable like <i>imagestorage<i>. For authentication, your storage account key can be retrieved under the 'Access Keys' panel from the storage resource, or alternatively you can create a SAS token specific to the target container with at least Read and List permissions. Once all fields have been entered click <i>Create</i>.
+* Click <i>+ New datastore</i> and enter the required fields. For <i>Datastore name</i> choose something memorable like <i>imagestorage</i>. For authentication, your storage account key can be retrieved under the 'Access Keys' panel from the storage resource, or alternatively you can create a SAS token specific to the target container with at least Read and List permissions. Once all fields have been entered click <i>Create</i>.
 
 ![New Datastore](doc_img/13.png?raw=true "New Datastore")
 
