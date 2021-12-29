@@ -99,9 +99,12 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 
 * When prompted to select or create a dataset choose <i>+ Create dataset</i> and select the <i>From datastore</i> option.
 
+![Create Dataset from Datastore](doc_img/18.png?raw=true "Create Dataset from Datastore")
+
+* Give your new dataset a unique name that reflects the images captured in support of the detection task and click <i>Next</i>.
 
 
-* Give your new dataset a unique name that reflects the images captured in support of the detection task and click `Next`.
+
 * Under datastore selection choose the datastore you added which contains images captured on the edge. Here, you can also provide a wildcarded path if you wish to pull only images from specified partitions. If you wish to pull all images from the container, enter `/` as the path.
 * Confirm details about your new dataset and click `Create`.
 * When prompted, choose to Enable incremental refresh at regular intervals. Thiss will automatically add newly captured images to your data labeling project.
