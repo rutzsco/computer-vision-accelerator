@@ -157,7 +157,10 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 
 * Run progress can be monitored by navigating to 'Experiments' and selecting the name of your submitted experiment.
 
-
+![Run Progress](doc_img/32.png?raw=true "Run Progress")
 
 * Once training completes, the best performing model will be added to your registry automatically along with key performance metrics (Mean Average Precision, Precision, Recall). A serialized version of this model and associated python scoring file are included as well.
-* Your custom trained object detection model is ready to be deployed to the edge! 
+
+
+
+### Your custom trained object detection model is ready to be deployed to the edge! 
