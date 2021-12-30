@@ -45,7 +45,7 @@ From your Azure DevOps project, create a new CI pipeline using the yaml definiti
 
 ![Connect to Forked Repo](doc_img/06.png?raw=true "Connect to Forked Repo")
 
-* When prompted to configure your pipeline, choose the <i>Existing Azure Pipelines YAML file option</i>. 
+* When prompted to configure your pipeline, choose the <i>Existing Azure Pipelines YAML file</i> option. 
 
 ![Existing Azure Pipelines YAML](doc_img/07.png?raw=true "Existing Azure Pipelines YAML")
 
