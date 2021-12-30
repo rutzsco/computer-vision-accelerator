@@ -113,7 +113,7 @@ Here you will use Azure ML to create a dataset of labeled images using images co
 
 ![Incremental Refresh](doc_img/21.png?raw=true "Incremental Refresh")
 
-* On the next panel, add label classes for all defects you wish to detect - include positive and negative classes here.
+* On the next panel, add label classes for all objects or defects you wish to detect - include positive and negative classes here.
 
 ![Label Classes](doc_img/22.png?raw=true "Label Classes")
 
