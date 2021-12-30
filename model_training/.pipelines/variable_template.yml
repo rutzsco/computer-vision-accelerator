@@ -1,0 +1,46 @@
+# Pipeline template that defines common runtime environment variables used across all environments.
+variables:
+
+  # Azure ML Resource Variables
+  - name: BASE_NAME
+    value: cvacc
+  - name: LOCATION
+    value: eastus2
+  - name: RESOURCE_GROUP
+    value: cv_acc_rg
+  - name: WORKSPACE_NAME
+    value: cv_acc_aml_ws
+  - name: WORKSPACE_SKU
+    value: basic
+  - name: AZURE_RM_SVC_CONNECTION
+    value: azure-resource-connection
+  - name: WORKSPACE_SVC_CONNECTION
+    value: aml-workspace-connection
+    
+  # AML Compute Cluster Config
+  - name: AML_ENV_NAME
+    value: automl_for_images_training_env
+  - name: VM_SIZE
+    value: Standard_NC6
+  - name: AML_COMPUTE_CLUSTER_NAME
+    value: gpu-cluster
+  - name: AML_CLUSTER_MIN_NODES
+    value: 0
+  - name: AML_CLUSTER_MAX_NODES
+    value: 5
+  - name: IDLE_SECONDS_BEFORE_SCALEDOWN
+    value: 180
+  
+  # AML Pipeline Creation Config
+  - name: AUTOML_PIPELINE_DIR
+    value: model_training
+  - name: AUTOML_PIPELINE_CREATION_SCRIPT
+    value: create_aml_pipeline.py
+  - name: AUTOML_PIPELINE_NAME
+    value: automl_for_images_training_pipeline
+  - name: AUTOML_PIPELINE_DESCRIPTION
+    value: Pipeline for automatically training an object dection model using AML's AutoML for Images functionality
+  - name: PIPELINE_STEPS_DIR
+    value: aml_pipeline_step_scripts
+  - name: AUTOML_JOB_SUBMIT_PIPELINE_SCRIPT
+    value: automl_job.py

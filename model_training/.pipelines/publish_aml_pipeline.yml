@@ -1,0 +1,44 @@
+resources:
+  containers:
+  - container: mlops
+    image: mcr.microsoft.com/mlops/python:latest
+
+pr:
+  branches:
+    exclude:
+      - '*'
+trigger:
+  branches:
+    include:
+    - mlops
+  paths:
+    include:
+    - model_training/
+
+variables:
+- template: variable_template.yml
+
+pool:
+  vmImage: ubuntu-latest
+
+
+stages:
+- stage: 'Publish_AML_Pipeline'
+  displayName: 'Publish AML Pipeline'
+  jobs:
+  - job: "AML_PIPELINE"
+    displayName: "Build and Publish AML Pipeline"
+    container: mlops
+    timeoutInMinutes: 0
+    steps:
+    - task: AzureCLI@1
+      inputs:
+        azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
+        scriptLocation: inlineScript
+        workingDirectory: $(Build.SourcesDirectory)/model_training
+        inlineScript: |
+          set -e # fail on error
+          export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+          # Invoke the Python building and publishing a training pipeline
+          python -m create_aml_automl_for_images_pipeline
+      displayName: 'Publish Azure Machine Learning Pipeline (AutoML for Images Training)'
