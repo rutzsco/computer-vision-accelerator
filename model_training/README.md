@@ -11,7 +11,7 @@ The guided walkthrough below highlights how to deploy an Azure Machine Learning 
  - [Step 5 - Train a New Object Detection Model](#step-5---train-a-new-object-detection-model)
 
 
-<b>Note: </b> Prior to completing any of the steps below, deploy all required Azure infrastructure using the IaC pipeline at `path\to\dir\pipeline.yaml`.
+<b>Note: </b> Prior to completing any of the steps below, deploy all required Azure infrastructure using the IaC pipeline at `path\to\dir\pipeline.yml`.
 
 ## Step 1 - Create Azure DevOps Service Connection to Machine Learning Workspace
 
