@@ -8,9 +8,14 @@ param environmentName string = 'computer-vision'
 @description('The environment prefix to append to resource names.')
 param environmentNameShort string = 'computervision'
 
+@description('The admin password for SQL Server.')
+@secure()
+param sqlAdministratorLoginPassword string
+
 // Resource names
 var acrResourceName = '${environmentName}acr${environmentSuffix}'
 var saResourceName = '${environmentNameShort}sa${environmentSuffix}'
+var sqlServerResourceName = '${environmentNameShort}sql-${environmentSuffix}'
 
 // ACR
 module azureContainerRegistry 'acr.bicep' = {
@@ -34,6 +39,17 @@ module sa 'storage-account.bicep' = {
   name: 'sa'
   params: {
     storageAccountName: saResourceName
+  }
+}
+
+// SQL
+module sql 'storage-account.bicep' = {
+  name: 'sql'
+  params: {
+    serverName: sqlServerResourceName
+    sqlDBName: 'SampleDB'
+    administratorLogin: 'developer'
+    administratorLoginPassword: sqlAdministratorLoginPassword
   }
 }
 
