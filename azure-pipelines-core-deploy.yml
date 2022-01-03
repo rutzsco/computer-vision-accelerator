@@ -28,7 +28,7 @@ steps:
     scriptLocation: inlineScript
     inlineScript: |
       az group create --name $(resourceGroupName) --location $(location)  
-      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters environmentName=$(environmentName) environmentSuffix=$(environmentSuffix) > outputs.json
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters environmentName=$(environmentName) environmentSuffix=$(environmentSuffix) sqlAdministratorLoginPassword=$(sqlAdministratorLoginPassword) > outputs.json
 
       
       

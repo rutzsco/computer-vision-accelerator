@@ -43,7 +43,7 @@ module sa 'storage-account.bicep' = {
 }
 
 // SQL
-module sql 'storage-account.bicep' = {
+module sql 'sql-database.bicep' = {
   name: 'sql'
   params: {
     serverName: sqlServerResourceName
