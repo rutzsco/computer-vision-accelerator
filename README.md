@@ -1,4 +1,4 @@
-# computer-vision-accelerator
+# Computer Vision Accelerator
 
 ## Azure Resources
 
