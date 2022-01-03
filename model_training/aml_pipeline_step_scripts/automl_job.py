@@ -41,7 +41,7 @@ parameter_space = {
             "model_name": choice("yolov5"),
             "learning_rate": uniform(0.0001, 0.01),
             "model_size": choice("small", "medium"),  # model-specific
-            #'img_size': choice(640, 704, 768), # model-specific; might need GPU with large memory
+            'img_size': 512, # model-specific; might need GPU with large memory
         }
     ),
 }
