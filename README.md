@@ -1,22 +1,22 @@
 # computer-vision-accelerator
 
-# Azure resources
+## Azure Resources
 
-- iot hub
-- storage account
-- container registry
-- azure sql
-- stream analytics
-- azure ML
-- azure keyvalut(AML)
-- azure stroage acocount(AML)
-- application insights (AML)
+- Iot Hub
+- Storage Account
+- Container Registry
+- Azure SQL Database
+- Stream Analytics
+- Azure Machine Learning (AML)
+- Key Vault(AML)
+- Storage Account (AML)
+- Application Insights (AML)
 
 ### TBD Extensions
 - Enterprise Analytics
 - NRT Dashboard
 - 
-# Installation Guide
+## Installation Guide
 
 ### 1. Deploy Azure Infrstructure
 TBD
