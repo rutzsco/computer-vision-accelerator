@@ -11,7 +11,7 @@ resources:
 - repo: self
 
 variables:
-  dockerRegistryServiceConnection: '3e7bd2c0-853d-4920-896c-5a1e573a4f4d'
+  dockerRegistryServiceConnection: '814e525e-80ac-436c-b68c-64c5718b3708'
   imageRepository: 'cvcoe/filemover'
   containerRegistry: 'computervisioncracrci.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/modules/FileMover/Dockerfile.amd64'
