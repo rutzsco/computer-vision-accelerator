@@ -1,0 +1,29 @@
+parameters: 
+- name: stageName
+  default: ''
+- name: environment
+  default: ''
+
+stages:
+  - stage: ${{ parameters.stageName }}
+    displayName: ${{ parameters.stageName }}
+
+    jobs:
+    - deployment: Deploy
+      displayName: Deploy
+      environment: ${{ parameters.environment }}
+      pool:
+        vmImage: 'ubuntu-latest'
+  
+      strategy:
+        runOnce:
+          deploy:
+  
+            steps:
+
+            - task: AzureIoTEdge@2
+              displayName: 'Azure IoT Edge - Generate deployment manifest'
+              inputs:
+                action: 'Generate deployment manifest'
+                templateFilePath: '$(Pipeline.Workspace)/build/edge_instances/deployment.template.json'
+                deploymentManifestOutputPath: '$(Pipeline.Workspace)/build/edge_instances/configs/deployment.json'

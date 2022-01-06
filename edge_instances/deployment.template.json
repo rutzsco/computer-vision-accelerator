@@ -1,0 +1,77 @@
+{
+  "modulesContent": {
+      "$edgeAgent": {
+          "properties.desired": {
+              "modules": {
+                  "FileMover": {
+                      "settings": {
+                          "image": "computervisioncracrci.azurecr.io/cvcoe/filemover:0.1.5",
+                          "createOptions": ""
+                      },
+                      "type": "docker",
+                      "version": "1.0",
+                      "env": {
+                          "BLOB_LOCAL_CONNSTR": {
+                              "value": "${BLOB_LOCAL_CONNSTR}"
+                          },
+                          "BLOB_LOCAL_AZURE_FILE_CONTAINER": {
+                              "value": "${BLOB_LOCAL_AZURE_FILE_CONTAINER}"
+                          },
+                          "LOCAL_FILE_PATH": {
+                              "value": "/app"
+                          }
+                      },
+                      "status": "running",
+                      "restartPolicy": "always"
+                  }
+              },
+              "runtime": {
+                  "settings": {
+                      "minDockerVersion": "v1.25",
+                      "registryCredentials": {
+                          "CR1": {
+                              "address": "${ACR_ADDRESS}",
+                              "password": "${ACR_PASSWORD}",
+                              "username": "${ACR_USER}"
+                          }
+                      }
+                  },
+                  "type": "docker"
+              },
+              "schemaVersion": "1.1",
+              "systemModules": {
+                  "edgeAgent": {
+                      "settings": {
+                          "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
+                          "createOptions": ""
+                      },
+                      "type": "docker"
+                  },
+                  "edgeHub": {
+                      "settings": {
+                          "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
+                          "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                      },
+                      "type": "docker",
+                      "status": "running",
+                      "restartPolicy": "always"
+                  }
+              }
+          }
+      },
+      "$edgeHub": {
+          "properties.desired": {
+              "routes": {
+                  "route": "FROM /messages/* INTO $upstream"
+              },
+              "schemaVersion": "1.1",
+              "storeAndForwardConfiguration": {
+                  "timeToLiveSecs": 7200
+              }
+          }
+      },
+      "FileMover": {
+          "properties.desired": {}
+      }
+  }
+}
