@@ -4,8 +4,8 @@ trigger:
     include:
     - main
   paths:
-    exclude:
-    - modules/*
+    include:
+    - infrastructure/*
     
 variables:
   vmImageName: 'ubuntu-latest'
