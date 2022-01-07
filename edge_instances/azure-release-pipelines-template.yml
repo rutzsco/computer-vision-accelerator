@@ -1,4 +1,6 @@
 parameters: 
+- name: azureSubscription
+  default: ''
 - name: stageName
   default: ''
 - name: environment
@@ -10,6 +12,10 @@ parameters:
 - name: acrUser
   default: ''
 - name: blobConnectionString
+  default: ''
+- name: deploymentId
+  default: ''
+- name: deviceId
   default: ''
 
 stages:
@@ -44,6 +50,17 @@ stages:
                 ACR_PASSWORD: ${{ parameters.acrPassword }}
                 ACR_USER: ${{ parameters.acrUser }}
                 BLOB_LOCAL_CONNSTR: ${{ parameters.blobConnectionString }}
+
+            - task: AzureIoTEdge@2
+              displayName: 'Azure IoT Edge - Deploy to IoT Edge devices'
+              inputs:
+                action: 'Deploy to IoT Edge devices'
+                deploymentFilePath: '$(Pipeline.Workspace)/build/edge_instances/configs/deployment.json'
+                azureSubscription: ${{ parameters.azureSubscription }}
+                iothubname: computervisioncracrci
+                deploymentid: ${{ parameters.deploymentId }}
+                deviceOption: 'Single Device'
+                deviceId: ${{ parameters.deviceId }}
 
             - task: PublishPipelineArtifact@1
               inputs:

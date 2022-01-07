@@ -15,7 +15,10 @@ stages:
   parameters:
     stageName: 'CI'
     environment: 'DEVICE001'
+    azureSubscription: ${{ variables.azureSubscription }}
     acrAddress: ${{ variables.acrAddress }}
     acrPassword: $(acrPassword)
     acrUser: ${{ variables.acrUser }}
     blobConnectionString: $(blobConnectionString)
+    deploymentId: '$(System.TeamProject)-$(Release.EnvironmentName)-$(Release.ReleaseId)'
+    deviceId: 'device001'
