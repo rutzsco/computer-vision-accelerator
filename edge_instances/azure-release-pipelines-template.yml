@@ -47,6 +47,6 @@ stages:
 
             - task: PublishPipelineArtifact@1
               inputs:
-                targetPath: 'edge_instances'
-                artifact: 'edge_instances'
+                targetPath: '$(Pipeline.Workspace)/build/edge_instances/configs'
+                artifact: 'configs'
                 publishLocation: 'pipeline'
