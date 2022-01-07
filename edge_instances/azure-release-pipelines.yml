@@ -3,7 +3,7 @@ trigger: none
 resources:
   pipelines:
   - pipeline: build
-    source: 'CVA - File Mover - BUILD'
+    source: 'CVA - Device Deployments - BUILD'
   
 variables:
   azureSubscription: 'Demo Account'
