@@ -48,8 +48,15 @@ stages:
                 azureSubscription: ${{ parameters.azureSubscription }}
                 scriptLocation: inlineScript
                 inlineScript: |
+                  VAR1="computervisioncracrci.azurecr.io/cvcoe/filemover:"
                   MODULE_FILEMOVER_VERSION=$(az acr repository show-tags -n computervisioncracrci --repository cvcoe/filemover --query [-2])
-                  echo "##vso[task.setvariable variable=MODULE_FILEMOVER_VERSION]${MODULE_FILEMOVER_VERSION}"
+                  MODULE_FILEMOVER_IMAGE_NAME = VAR3="$VAR1$MODULE_FILEMOVER_VERSION"
+                  echo "##vso[task.setvariable variable=MODULE_FILEMOVER_IMAGE_NAME]${MODULE_FILEMOVER_IMAGE_NAME}"
+
+            - task: Bash@3
+              inputs:
+                targetType: 'inline'
+                script: 'echo "$(MODULE_FILEMOVER_VERSION)"'
 
             - task: AzureIoTEdge@2
               displayName: 'Azure IoT Edge - Generate deployment manifest'
@@ -62,7 +69,7 @@ stages:
                 ACR_PASSWORD: ${{ parameters.acrPassword }}
                 ACR_USER: ${{ parameters.acrUser }}
                 BLOB_LOCAL_CONNSTR: ${{ parameters.blobConnectionString }}
-                MODULE_FILEMOVER_VERSION: 'computervisioncracrci.azurecr.io/cvcoe/filemover:$(MODULE_FILEMOVER_VERSION)'
+                MODULE_FILEMOVER_VERSION: '$(MODULE_FILEMOVER_IMAGE_NAME)'
 
             - task: AzureIoTEdge@2
               displayName: 'Azure IoT Edge - Deploy to IoT Edge devices'
