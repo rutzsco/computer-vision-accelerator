@@ -7,9 +7,15 @@ resources:
   
 variables:
   azureSubscription: 'Demo Account'
-
+  acrAddress: 'computervisioncracrci.azurecr.io'
+  acrUser: 'computervisioncracrci'
+  
 stages:
 - template: azure-release-pipelines-template.yml
   parameters:
     stageName: 'CI'
     environment: 'DEVICE001'
+    acrAddress: ${{ variables.acrAddress }}
+    acrPassword: $(acrPassword)
+    acrUser: ${{ variables.acrUser }}
+    blobConnectionString: $(blobConnectionString)

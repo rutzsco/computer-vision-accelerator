@@ -15,7 +15,7 @@
                               "value": "${BLOB_LOCAL_CONNSTR}"
                           },
                           "BLOB_LOCAL_AZURE_FILE_CONTAINER": {
-                              "value": "${BLOB_LOCAL_AZURE_FILE_CONTAINER}"
+                              "value": "trainingdata"
                           },
                           "LOCAL_FILE_PATH": {
                               "value": "/app"
