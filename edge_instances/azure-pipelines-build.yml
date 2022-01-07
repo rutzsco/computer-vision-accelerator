@@ -1,0 +1,19 @@
+name: 0.1.$(Rev:r)
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - edge_instances/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: Infrastructure'
+  inputs:
+    PathtoPublish: edge_instances
+    ArtifactName: edge_instances
