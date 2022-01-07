@@ -16,7 +16,7 @@ The bicep IaC files and azure devops deployment pipeline are located in the infr
 
 ![1. Create New Pipeline](doc_img/createpipelinestep1 "Create New Pipeline")
 ![2. Select Repo](doc_img/createpipelinestep2 "Select Repo")
-![3. Selecte existing pipeline](doc_img/createpipelinestep3 "Selecte existing pipeline")
+![3. Selecte existing Azure Pipelines YAML File](doc_img/createpipelinestep3 "Selecte existing pipeline")
 ![4. Select YAML Pipeline](doc_img/createpipelinestep4 "Select YAML Pipeline")
 
 ## Reference
