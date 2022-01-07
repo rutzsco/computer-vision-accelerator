@@ -39,12 +39,11 @@ stages:
                 action: 'Generate deployment manifest'
                 templateFilePath: '$(Pipeline.Workspace)/build/edge_instances/deployment.template.json'
                 deploymentManifestOutputPath: '$(Pipeline.Workspace)/build/edge_instances/configs/deployment.json'
-                env:
-                  ACR_ADDRESS: ${{ parameters.acrAddress }}
-                  ACR_PASSWORD: ${{ parameters.acrPassword }}
-                  ACR_USER: ${{ parameters.acrUser }}
-                  BLOB_LOCAL_CONNSTR: ${{ parameters.blobConnectionString }}
-
+              env:
+                ACR_ADDRESS: ${{ parameters.acrAddress }}
+                ACR_PASSWORD: ${{ parameters.acrPassword }}
+                ACR_USER: ${{ parameters.acrUser }}
+                BLOB_LOCAL_CONNSTR: ${{ parameters.blobConnectionString }}
 
             - task: PublishPipelineArtifact@1
               inputs:
