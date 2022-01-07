@@ -5,7 +5,7 @@
               "modules": {
                   "FileMover": {
                       "settings": {
-                          "image": "computervisioncracrci.azurecr.io/cvcoe/filemover:0.1.9",
+                          "image": "${MODULE_FILEMOVER_VERSION}",
                           "createOptions": ""
                       },
                       "type": "docker",
