@@ -48,8 +48,8 @@ stages:
                 azureSubscription: ${{ parameters.azureSubscription }}
                 scriptLocation: inlineScript
                 inlineScript: |
-                MODULE_FILEMOVER_VERSION=$(az acr repository show-tags -n computervisioncracrci --repository cvcoe/filemover --query [-2])
-                echo "##vso[task.setvariable variable=MODULE_FILEMOVER_VERSION]${MODULE_FILEMOVER_VERSION}" 
+                  MODULE_FILEMOVER_VERSION=$(az acr repository show-tags -n computervisioncracrci --repository cvcoe/filemover --query [-2])
+                  echo "##vso[task.setvariable variable=MODULE_FILEMOVER_VERSION]${MODULE_FILEMOVER_VERSION}"
 
             - task: AzureIoTEdge@2
               displayName: 'Azure IoT Edge - Generate deployment manifest'
