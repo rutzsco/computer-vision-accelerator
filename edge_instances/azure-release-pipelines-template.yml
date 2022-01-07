@@ -17,6 +17,9 @@ parameters:
   default: ''
 - name: deviceId
   default: ''
+- name: iotHubName
+  default: ''
+
 
 stages:
   - stage: ${{ parameters.stageName }}
@@ -57,7 +60,7 @@ stages:
                 action: 'Deploy to IoT Edge devices'
                 deploymentFilePath: '$(Pipeline.Workspace)/build/edge_instances/configs/deployment.json'
                 azureSubscription: ${{ parameters.azureSubscription }}
-                iothubname: computervisioncracrci
+                iothubname: ${{ parameters.iotHubName }}
                 deploymentid: ${{ parameters.deploymentId }}
                 deviceOption: 'Single Device'
                 deviceId: ${{ parameters.deviceId }}

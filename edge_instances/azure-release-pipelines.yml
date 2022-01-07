@@ -20,5 +20,6 @@ stages:
     acrPassword: $(acrPassword)
     acrUser: ${{ variables.acrUser }}
     blobConnectionString: $(blobConnectionString)
-    deploymentId: '$(System.TeamProject)-$(Release.EnvironmentName)-$(Release.ReleaseId)'
+    deploymentId: '$(System.TeamProject)-DEVICE001-$(Build.BuildNumber)'
     deviceId: 'device001'
+    iotHubName: 'computervisioncr-ci'
