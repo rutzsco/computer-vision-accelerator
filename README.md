@@ -1,10 +1,10 @@
 # Computer Vision Accelerator
 
-## Azure Resources
+## Azure Services
 
-- Iot Hub
+- Azure IoT Hub: This is your Cloud gateway which is needed to manage your IoT Edge devices. All deployments to Edge devices are made through an IoT Hub.
+- Azure Container Registry: This is where you host your containers (e.g. IoT Edge modules). Deployment manifests refer to this container registry for the IoT Edge devices to download their images.
 - Storage Account
-- Container Registry
 - Azure SQL Database
 - Stream Analytics
 - Azure Machine Learning (AML)
