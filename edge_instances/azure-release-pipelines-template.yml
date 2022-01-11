@@ -69,7 +69,7 @@ stages:
                 ACR_PASSWORD: ${{ parameters.acrPassword }}
                 ACR_USER: ${{ parameters.acrUser }}
                 BLOB_LOCAL_CONNSTR: ${{ parameters.blobConnectionString }}
-                MODULE_FILEMOVER_VERSION: $(MODULE_FILEMOVER_IMAGE_NAME)
+                MODULE_FILEMOVER_VERSION: '$(MODULE_FILEMOVER_IMAGE_NAME)'
             
             - task: PublishPipelineArtifact@1
               inputs:
