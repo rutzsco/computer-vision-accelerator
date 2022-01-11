@@ -49,7 +49,7 @@ stages:
                 scriptLocation: inlineScript
                 inlineScript: |
                   VAR1="computervisioncracrci.azurecr.io/cvcoe/filemover:"
-                  VAR2=$(az acr repository show-tags -n computervisioncracrci --repository cvcoe/filemover --query [-2])
+                  VAR2=$(az acr repository show-tags -n computervisioncracrci --repository cvcoe/filemover --orderby time_asc --query [-2])
                   VAR3=`sed -e 's/^"//' -e 's/"$//' <<<"$VAR2"`
                   VAR4="$VAR1$VAR3"                 
                   echo "##vso[task.setvariable variable=MODULE_FILEMOVER_IMAGE_NAME]${VAR4}"
